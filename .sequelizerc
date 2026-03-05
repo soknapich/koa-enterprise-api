@@ -1,0 +1,11 @@
+require('dotenv').config();
+const env = process.env.NODE_ENV || 'local';
+require('custom-env').env(env);
+
+const path = require('path')
+module.exports = {
+  'config': path.resolve('app', 'config/sequelize.config.js'),
+  'migrations-path': path.resolve('app/migrations/sequelize', 'migrations'),
+  'seeders-path': path.resolve('app/migrations/sequelize', 'seeders'),
+  'models-path': path.resolve('app', 'models'),
+}

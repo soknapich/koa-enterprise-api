@@ -1,0 +1,35 @@
+{
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "LOCAL",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["-r", "module-alias/register"],
+      "program": "${workspaceFolder}/app/server.js",
+      "envFile": "${workspaceFolder}/.env.local",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "UAT",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["-r", "module-alias/register"],
+      "program": "${workspaceFolder}/app/server.js",
+      "envFile": "${workspaceFolder}/.env.qa",
+      "console": "internalConsole"
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "PRD",
+      "skipFiles": ["<node_internals>/**"],
+      "runtimeArgs": ["-r", "module-alias/register"],
+      "program": "${workspaceFolder}/app/server.js",
+      "envFile": "${workspaceFolder}/.env.production",
+      "console": "internalConsole"
+    }
+  ]
+}
