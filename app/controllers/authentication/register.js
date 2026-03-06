@@ -14,11 +14,3 @@ exports.register = async (ctx) => {
     ctx.body = { success: false, message: err.message };
   }
 };
-
-exports.login = async (ctx) => {
-  ctx.body = await authService.login(ctx.request.body);
-};
-
-exports.refresh = async (ctx) => {
-  ctx.body = await authService.refreshToken(ctx.request.body.refreshToken);
-};

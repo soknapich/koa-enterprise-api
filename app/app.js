@@ -26,10 +26,9 @@ app.use(cors({
 }));
 
 
-
-// 4️⃣ Protect routes (skip /auth/*)
+// 4️⃣ Protect routes (skip /api/auth/*)
 app.use(async (ctx, next) => {
-  if (ctx.path.startsWith("/auth")) {
+  if (ctx.path.startsWith("/api/auth")) {
     // public routes
     await next();
   } else {

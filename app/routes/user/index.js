@@ -1,8 +1,8 @@
 const Router = require("koa-router");
-const userController = require("@controllers/user-controller");
+const { getAll } = require("@controllers/user/get-all");
 
-const router = new Router({ prefix: "/users" });
-router.get("/get-all", userController.getAll);  // ✅ new register route
+const router = new Router({ prefix: "/api/user" });
+router.get("/get-all", getAll);  // ✅ new register route
 
 
 module.exports = router;
