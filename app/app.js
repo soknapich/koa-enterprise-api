@@ -6,7 +6,7 @@ const corsConfig = require("@config/core");
 const routes = require("@routes");
 const errorHandler = require("@middlewares/error-middleware");
 const authMiddleware = require("@middlewares/auth-middleware");
-
+const tokenMiddleware = require("@middlewares/token-middleware");
 const app = new Koa();
 
 // 2️⃣ Logger (optional, can reduce level in dev)
@@ -33,7 +33,13 @@ app.use(async (ctx, next) => {
     await next();
   } else {
     // protected routes
-    await authMiddleware(ctx, next);
+    if (ctx.headers["x-access-token"] !== undefined) {
+      //x-access-token header is present, use token middleware
+      await tokenMiddleware(ctx, next);
+    } else {
+      //User login
+      await authMiddleware(ctx, next);
+    }
   }
 });
 
