@@ -1,8 +1,8 @@
-const authService = require("@services/authentication");
+const { registerService } = require("@services/authentication/register-service");
 
 exports.register = async (ctx) => {
   try {
-    const result = await authService.register(ctx.request.body);
+    const result = await registerService(ctx.request.body);
 
     ctx.body = {
       status: 200,

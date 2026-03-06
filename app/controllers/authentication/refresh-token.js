@@ -1,5 +1,10 @@
-const authService = require("@services/authentication");
+const { refreshTokenService } = require("@services/authentication/refresh-token-service");
 
 exports.refresh = async (ctx) => {
-  ctx.body = await authService.refreshToken(ctx.request.body.refreshToken);
+  try {
+    ctx.body = await refreshTokenService(ctx.request.body.refreshToken);
+  } catch (error) {
+    throw error;
+  }
+
 };

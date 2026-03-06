@@ -1,5 +1,9 @@
-const authService = require("@services/authentication");
+const { loginService } = require("@services/authentication/login-service");
 
 exports.login = async (ctx) => {
-  ctx.body = await authService.login(ctx.request.body);
+  try {
+    ctx.body = await loginService(ctx.request.body);
+  } catch (error) {
+    throw error;
+  }
 };
