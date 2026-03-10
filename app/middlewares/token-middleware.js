@@ -16,14 +16,14 @@ module.exports = async (ctx, next) => {
     // check if the app token exists or record is active and not deleted
     if (!resultAppToken) {
       ctx.status = 403;
-      throw new Error('REQUEST FORBIDDEN');
+      throw new Error('Request Forbidden');
     }
 
     if (resultAppToken) {
       // check if the app token is expired
       if (resultAppToken.expiryDate < new Date()) {
         ctx.status = 403;
-        throw new Error('TOKEN EXPIRED');
+        throw new Error('Token Expired');
       }
 
       // check if the request url and method match the app token's apiUrls and method
@@ -39,7 +39,7 @@ module.exports = async (ctx, next) => {
       //const appUrl = match.url.replace(/\/:[^/]+$/, ''); // Remove trailing :param from url
       if ((!match) || ctx.request.method !== match.method.toUpperCase()) {
         ctx.status = 403;
-        throw new Error('INVALID REQUEST');
+        throw new Error('Invalid Request');
       }
     }
 
