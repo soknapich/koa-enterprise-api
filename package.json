@@ -7,7 +7,8 @@
     "prod": "cross-env NODE_ENV=production node -r module-alias/register app/server.js",
     "db:migrate:local": "cross-env NODE_ENV=local sequelize db:migrate --config app/config/sequelize.config.js",
     "db:migrate:undo:local": "cross-env NODE_ENV=local sequelize db:migrate:undo --config app/config/sequelize.config.js",
-    "db:seed:local:all": "cross-env NODE_ENV=local sequelize-cli db:seed:all --config app/config/sequelize.config.js"
+    "db:seed:local:all": "cross-env NODE_ENV=local sequelize-cli db:seed:all --config app/config/sequelize.config.js",
+    "job:local:run": "cross-env NODE_ENV=local node app/jobs/message.js"
   },
   "dependencies": {
     "@koa/cors": "^5.0.0",
@@ -24,6 +25,7 @@
     "koa-router": "^12.0.0",
     "koa-static": "^5.0.0",
     "module-alias": "^2.2.3",
+    "node-cron": "^4.2.1",
     "pino": "^10.3.1",
     "sequelize": "^6.37.7",
     "tedious": "^18.6.1"
