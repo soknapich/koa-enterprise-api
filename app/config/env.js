@@ -22,5 +22,11 @@ module.exports = {
 
   API: {
     FAKE_PRODUCT_API: process.env.FAKE_PRODUCT_API
+  },
+
+  NC: {
+    URL: process.env.NC_URL,
+    USERNAME: process.env.NC_USERNAME,
+    PASSWORD: process.env.NC_PASSWORD
   }
 };
