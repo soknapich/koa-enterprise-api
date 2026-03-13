@@ -8,7 +8,7 @@ exports.getAll = async (ctx) => {
     //   order: [["createdAt", "DESC"]]
     // });
 
-    const result = await axiosGetNCFolders("customer-01");
+    const result = await axiosGetNCFolders();
 
     ctx.body = {
       status: 200,

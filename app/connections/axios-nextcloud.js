@@ -2,13 +2,12 @@ const axios = require('axios');
 const env = require("@config/env");
 const { parseStringPromise } = require("xml2js");
 
-module.exports.axiosGetNCFolders = async (folderPath) => {
+module.exports.axiosGetNCFolders = async () => {
 
   const username = env.NC.USERNAME;
   const password = env.NC.PASSWORD;
-
-  const normalizedFolderPath = folderPath.replace(/\/+$/, '');
-  const url = `${env.NC.URL}/remote.php/dav/files/${username}/uploads-dx/${normalizedFolderPath}/`;
+  const uploadFolder = env.NC.FOLDER_PATH;
+  const url = `${env.NC.URL}/remote.php/dav/files/${username}/${uploadFolder}`;
 
   try {
     // Make PROPFIND request
@@ -38,7 +37,7 @@ module.exports.axiosGetNCFolders = async (folderPath) => {
       const resType = item['d:propstat']['d:prop']['d:resourcetype'];
 
       // Skip the folder itself
-      if (href.endsWith(`/${folderPath}/`)) continue;
+      if (href.endsWith(`/${uploadFolder}/`)) continue;
 
       const parts = href.split('/').filter(Boolean); // remove empty strings
       const name = parts.pop();

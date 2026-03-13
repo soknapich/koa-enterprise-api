@@ -26,6 +26,7 @@ module.exports = {
 
   NC: {
     URL: process.env.NC_URL,
+    FOLDER_PATH: process.env.NC_FOLDER_PATH,
     USERNAME: process.env.NC_USERNAME,
     PASSWORD: process.env.NC_PASSWORD
   }
